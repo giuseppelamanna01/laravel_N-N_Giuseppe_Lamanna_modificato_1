@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Device extends Model
 {
     protected $fillable = [
-        'name', 'category', 'serialNumber', 'image'
+        'name', 'category', 'serialNumber', 'image', 'user_id'
     ];
 }

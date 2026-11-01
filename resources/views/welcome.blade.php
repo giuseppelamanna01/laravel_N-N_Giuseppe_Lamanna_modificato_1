@@ -4,6 +4,7 @@
         {{session('status')}}
     </div>
     @endif
+
     <div class="container">
         <h1 class="benvenuto text-light">Pagina di Benvenuto</h1>
         <div class="row">

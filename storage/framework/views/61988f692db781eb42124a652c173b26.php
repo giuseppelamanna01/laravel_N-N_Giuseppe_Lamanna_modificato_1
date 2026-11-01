@@ -14,6 +14,7 @@
 
     </div>
     <?php endif; ?>
+
     <div class="container">
         <h1 class="benvenuto text-light">Pagina di Benvenuto</h1>
         <div class="row">
@@ -47,4 +48,4 @@
 <?php if (isset($__componentOriginal23a33f287873b564aaf305a1526eada4)): ?>
 <?php $component = $__componentOriginal23a33f287873b564aaf305a1526eada4; ?>
 <?php unset($__componentOriginal23a33f287873b564aaf305a1526eada4); ?>
-<?php endif; ?><?php /**PATH C:\Users\39340\laravel_10_Giuseppe_Lamanna\resources\views/welcome.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH C:\Users\39340\laravel_crud_Giuseppe_Lamanna\resources\views/welcome.blade.php ENDPATH**/ ?>

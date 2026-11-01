@@ -8,8 +8,8 @@
       <div class="navbar-nav">
         <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
         <a class="nav-link" href="{{route('contact.us')}}">Contattaci</a>
-        <a class="nav-link" href="{{route('device.insert')}}">Inserisci/Salva dispositivo</a>
-        <a class="nav-link" href="{{route('device.list')}}">Lista</a>
+        <a class="nav-link" href="{{route('device.create')}}">Inserisci/Salva il tuo dispositivo</a>
+        <a class="nav-link" href="{{route('device.index')}}">Lista dei tuoi devices</a>
       </div>
       <ul>
         <li class="nav-item dropdown">

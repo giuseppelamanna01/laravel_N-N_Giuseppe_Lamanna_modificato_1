@@ -26,6 +26,13 @@
 <?php $component = $__componentOriginala591787d01fe92c5706972626cdf7231; ?>
 <?php unset($__componentOriginala591787d01fe92c5706972626cdf7231); ?>
 <?php endif; ?>
+    <?php if(session('success')): ?>
+        <div class="alert alert-success text-center m-0 mt-5">
+            <?php echo e(session('success')); ?>
+
+        </div>
+    <?php endif; ?>
+    
         <?php echo e($slot); ?>
 
     <?php if (isset($component)) { $__componentOriginal8a8716efb3c62a45938aca52e78e0322 = $component; } ?>
@@ -48,4 +55,4 @@
 <?php unset($__componentOriginal8a8716efb3c62a45938aca52e78e0322); ?>
 <?php endif; ?>
 </body>
-</html><?php /**PATH C:\Users\39340\laravel_10_Giuseppe_Lamanna\resources\views/components/layout.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Users\39340\laravel_crud_Giuseppe_Lamanna\resources\views/components/layout.blade.php ENDPATH**/ ?>

@@ -25,8 +25,7 @@ class DeviceRequest extends FormRequest
         return [
             'name'=>'required',
             'category'=>'required',
-            'serialNumber'=>'required',
-            'image'=>'required | image',
+            'serialNumber'=>'required'
         ];
     }
 }

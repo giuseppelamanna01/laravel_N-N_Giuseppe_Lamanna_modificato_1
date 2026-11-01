@@ -8,6 +8,12 @@
 </head>
 <body>
     <x-navbar></x-navbar>
+    @if (session('success'))
+        <div class="alert alert-success text-center m-0 mt-5">
+            {{ session('success') }}
+        </div>
+    @endif
+    
         {{$slot}}
     <x-footer></x-footer>
 </body>

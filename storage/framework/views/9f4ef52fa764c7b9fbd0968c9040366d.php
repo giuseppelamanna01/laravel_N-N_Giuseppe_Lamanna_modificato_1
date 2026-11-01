@@ -8,8 +8,8 @@
       <div class="navbar-nav">
         <a class="nav-link" aria-current="page" href="<?php echo e(route('home')); ?>">Home</a>
         <a class="nav-link" href="<?php echo e(route('contact.us')); ?>">Contattaci</a>
-        <a class="nav-link" href="<?php echo e(route('device.insert')); ?>">Inserisci/Salva dispositivo</a>
-        <a class="nav-link" href="<?php echo e(route('device.list')); ?>">Lista</a>
+        <a class="nav-link" href="<?php echo e(route('device.create')); ?>">Inserisci/Salva il tuo dispositivo</a>
+        <a class="nav-link" href="<?php echo e(route('device.index')); ?>">Lista dei tuoi devices</a>
       </div>
       <ul>
         <li class="nav-item dropdown">
@@ -40,4 +40,4 @@
       </ul>
     </div>
   </div>
-</nav><?php /**PATH C:\Users\39340\laravel_10_Giuseppe_Lamanna\resources\views/components/navbar.blade.php ENDPATH**/ ?>
+</nav><?php /**PATH C:\Users\39340\laravel_crud_Giuseppe_Lamanna\resources\views/components/navbar.blade.php ENDPATH**/ ?>
