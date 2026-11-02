@@ -5,6 +5,12 @@
     </div>
     @endif
 
+    @if(session()->has('error'))
+    <div class="alert alert-danger">
+        {{session('error')}}
+    </div>
+    @endif
+
     <div class="container">
         <h1 class="benvenuto text-light">Pagina di Benvenuto</h1>
         <div class="row">

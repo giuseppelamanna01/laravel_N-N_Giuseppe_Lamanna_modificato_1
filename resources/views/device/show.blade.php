@@ -9,13 +9,17 @@
             <div class="col-12 col-md-8">
                 <img src="{{ Storage::url($device->image) }}" alt="Immagine del device: {{$device->name}}" class="img-fluid">
             </div>
-            <div class="row">
-                <form action="{{route('device.delete', compact('device'))}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Elimina device</button>
-                </form>
-            </div>
+            @auth
+                @if($device->user_id == Auth::id())
+                <div class="row">
+                    <form action="{{route('device.delete', compact('device'))}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Elimina device</button>
+                    </form>
+                </div>
+                @endif
+            @endauth
         </div>
     </div>
 </x-layout>

@@ -13,6 +13,9 @@ use App\Http\Requests\DeviceEditRequest;
 
 class DeviceController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->except('index');
+    }
 
     public function dettaglio(Device $device){
         return view('device.dettaglio', ['device'=>$device]);
@@ -27,7 +30,8 @@ class DeviceController extends Controller
             'name'=>$request->name,
             'category'=>$request->category,
             'serialNumber'=>$request->serialNumber,
-            'image'=>$request->file('image')->store('images','public')
+            'image'=>$request->file('image')->store('images','public'),
+            'user_id'=>Auth::user()->id
         ]);
         return redirect()->route('home')->with('success', 'Device inserito correttamente');
     }
@@ -42,11 +46,16 @@ class DeviceController extends Controller
     }
 
     public function edit(Device $device){
-        return view('device.edit', compact('device'));
+        if($device->user_id == Auth::user()->id){
+            return view('device.edit', compact('device'));
+        }else{
+            return redirect()->route('home')->with('error', 'Errore di visualizzazione della pagina');
+        }
     }
 
-    public function update(DeviceEditRequest $request, Device $device)
+    public function update(Request $request, Device $device)
 {
+    if($device->user_id == Auth::user()->id){
     $device->name = $request->name;
     $device->category = $request->category;
     $device->serialNumber = $request->serialNumber;
@@ -54,11 +63,18 @@ class DeviceController extends Controller
         $device->image = $request->file('image')->store('images','public');
     }
     $device->save();
-    return redirect()->route('device.index')->with('success', 'Modifica avvenuta con successo');
+    return redirect()->route('home')->with('success', 'Modifica avvenuta con successo');
+    } else {
+    return redirect()->route('home')->with('error', 'Errore di visualizzazione della pagina');
+    }
 }
 
     public function delete(Device $device){
+        if($device->user_id == Auth::user()->id){
         $device->delete();
         return redirect()->route('home')->with('success', 'Eliminazione del device avvenuta con successo');
+    }else{
+        return redirect()->route('home')->with('error', 'Errore di visualizzazione della pagina');
     }
+}
 }

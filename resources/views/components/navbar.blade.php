@@ -19,6 +19,9 @@
           </a>
           <ul class="dropdown-menu">
             <li>
+              <a href="{{route('user.profile')}}">Profilo personale</a>
+            </li>
+            <li>
               <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('form-logout').submit();" class="dropdown-item">Logout</a>
               <form action="{{route('logout')}}" method="POST" id="form-logout" class="d-none">
                 @csrf

@@ -27,4 +27,8 @@ class PublicController extends Controller
     public function success(){
         return view('success');
     }
+
+    public function profile(){
+        return view('profile');
+    }
 }
