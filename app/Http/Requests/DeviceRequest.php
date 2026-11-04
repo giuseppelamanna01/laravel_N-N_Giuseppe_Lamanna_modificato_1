@@ -22,10 +22,12 @@ class DeviceRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name'=>'required',
-            'category'=>'required',
-            'serialNumber'=>'required'
+         return [
+        'name' => 'required',
+        'serialNumber' => 'required',
+        'image' => 'required|image',
+        'genres' => 'required|array',
+        'genres.*' => 'exists:genres,id',
         ];
     }
 }

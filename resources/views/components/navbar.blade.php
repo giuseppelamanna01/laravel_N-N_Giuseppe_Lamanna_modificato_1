@@ -10,6 +10,8 @@
         <a class="nav-link" href="{{route('contact.us')}}">Contattaci</a>
         <a class="nav-link" href="{{route('device.create')}}">Inserisci/Salva il tuo dispositivo</a>
         <a class="nav-link" href="{{route('device.index')}}">Lista dei tuoi devices</a>
+        <a class="nav-link" href="{{route('genre.create')}}">Inserisci/Aggiungi una categoria</a>
+        <a class="nav-link" href="{{route('genre.index')}}">Tutte le categorie</a>
       </div>
       <ul>
         <li class="nav-item dropdown">

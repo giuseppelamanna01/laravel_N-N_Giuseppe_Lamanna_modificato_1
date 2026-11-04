@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\GenreController;
 
 Route::get('/device/create', [DeviceController::class, 'create'])->name('device.create');
 Route::post('/device/create/submit', [DeviceController::class, 'storecrud'])->name('device.submit');
@@ -22,3 +23,10 @@ Route::get('/device/{device}', [DeviceController::class, 'dettaglio'])->name('de
 
 
 Route::get('/user/profile', [PublicController::class, 'profile'])->name('user.profile');
+
+Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
+Route::post('/genre/create/submit', [GenreController::class, 'store'])->name('genre.submit');
+Route::get('/genre/index', [GenreController::class, 'index'])->name('genre.index');
+Route::get('/genre/show/{genre}', [GenreController::class, 'show'])->name('genre.show');
+
+

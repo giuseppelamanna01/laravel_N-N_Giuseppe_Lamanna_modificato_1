@@ -5,6 +5,12 @@
                 <h1>{{$device->name}}</h1>
                 <h2>Categoria: {{$device->category}}</h2>
                 <p>{{$device->serialNumber}}</p>
+                <ul>
+                    @forelse($device->genres as $genre)
+                        <li>{{ $genre->name }}</li>
+                    @empty
+                    @endforelse
+                </ul>
             </div>
             <div class="col-12 col-md-8">
                 <img src="{{ Storage::url($device->image) }}" alt="Immagine del device: {{$device->name}}" class="img-fluid">

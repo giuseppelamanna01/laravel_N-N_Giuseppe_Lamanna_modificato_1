@@ -6,6 +6,12 @@
     <p class="card-text">Numero seriale: {{$device->serialNumber}}</p>
     <p class="card-text">Immagine: {{$device->image}}</p>
     <p>Aggiunto da: {{$device->user->name}}</p>
+    <div class="d-flex">
+      @forelse($device->genres as $genre)
+        <a href="{{route('genre.show', compact('genre'))}}">{{$genre->name}}</a>
+      @empty
+      @endforelse
+    </div>
     <a href="{{route('device.show', compact('device'))}}" class="btn btn-primary">More info...</a>
     @auth
       @if($device->user_id == Auth::id())

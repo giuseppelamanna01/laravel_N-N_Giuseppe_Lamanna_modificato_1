@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\DeviceRequest;
 use App\Http\Requests\DeviceEditRequest;
+use App\Models\Genre;
 
 class DeviceController extends Controller
 {
@@ -22,17 +23,18 @@ class DeviceController extends Controller
     }
 
     public function create(){
-        return view('device.create');
+        $genres = Genre::all();
+        return view('device.create', compact('genres'));
     }
 
     public function storecrud(DeviceRequest $request){
         $device = Device::create([
             'name'=>$request->name,
-            'category'=>$request->category,
             'serialNumber'=>$request->serialNumber,
             'image'=>$request->file('image')->store('images','public'),
             'user_id'=>Auth::user()->id
         ]);
+        $device->genres()->attach($request->genres);
         return redirect()->route('home')->with('success', 'Device inserito correttamente');
     }
 
