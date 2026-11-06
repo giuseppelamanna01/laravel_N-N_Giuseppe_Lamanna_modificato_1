@@ -9,6 +9,7 @@ use App\Models\Device;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\DeviceRequest;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DeviceEditRequest;
 use App\Models\Genre;
 
@@ -49,7 +50,8 @@ class DeviceController extends Controller
 
     public function edit(Device $device){
         if($device->user_id == Auth::user()->id){
-            return view('device.edit', compact('device'));
+             $genres = Genre::all();
+             return view('device.edit', compact('device', 'genres'));
         }else{
             return redirect()->route('home')->with('error', 'Errore di visualizzazione della pagina');
         }
@@ -58,16 +60,24 @@ class DeviceController extends Controller
     public function update(Request $request, Device $device)
 {
     if($device->user_id == Auth::user()->id){
-    $device->name = $request->name;
-    $device->category = $request->category;
-    $device->serialNumber = $request->serialNumber;
-    if($request->image){
-        $device->image = $request->file('image')->store('images','public');
-    }
-    $device->save();
-    return redirect()->route('home')->with('success', 'Modifica avvenuta con successo');
-    } else {
-    return redirect()->route('home')->with('error', 'Errore di visualizzazione della pagina');
+        $device->name = $request->name;
+        $device->category = $request->category;
+        $device->serialNumber = $request->serialNumber;
+        if($request->hasFile('image')){
+            $device->image = $request->file('image')->store('images','public');
+        }
+        $device->save();
+         DB::table('genre_device')->where('device_id', $device->id)->delete();
+         $genres = Genre::all();
+          foreach($genres as $genre){
+            if($request->has('genre' . $genre->id)){
+                $device->genres()->attach($genre->id);
+            }
+        }
+        
+        return redirect()->route('home')->with('success', 'Modifica avvenuta con successo');
+        } else {
+        return redirect()->route('home')->with('error', 'Errore di visualizzazione della pagina');
     }
 }
 

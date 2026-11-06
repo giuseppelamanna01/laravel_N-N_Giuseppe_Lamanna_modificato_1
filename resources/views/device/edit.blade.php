@@ -32,6 +32,29 @@
                         <label for="image" class="form-label text-light">Immagine:</label>
                         <input type="file" name="image" class="form-control" id="image" value="{{$device->image}}">
                     </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-light">Generi</label><br>
+
+                            @foreach($genres as $genre)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox"
+                                        name="genre{{$genre->id}}"
+                                        value="1"
+                                        id="genre{{$genre->id}}"
+                                        @foreach($device->genres as $deviceGenre)
+                                            @if($deviceGenre->id == $genre->id)
+                                                checked
+                                            @endif
+                                        @endforeach
+                                    >
+                                    <label class="form-check-label text-light" for="genre{{$genre->id}}">
+                                        {{ $genre->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+
                     <button type="submit" class="btn btn-primary mt-4">Submit</button>
                 </form>
             </div>
