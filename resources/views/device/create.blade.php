@@ -28,7 +28,7 @@
                         <input type="file" name="image" class="form-control" id="image">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-light">Categoria:</label>
+                        <label class="form-label text-light">Generi:</label>
                         @foreach($genres as $genre)
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="genres[]" value="{{ $genre->id }}" id="genreCheck-{{ $genre->id }}">

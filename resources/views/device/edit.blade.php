@@ -21,10 +21,6 @@
                        
                     </div>
                     <div class="mb-3">
-                        <label for="category" class="form-label text-light">Categoria:</label>
-                        <input type="text" name="category" class="form-control" id="category" value="{{$device->category}}">
-                    </div>
-                    <div class="mb-3">
                         <label for="serialNumber" class="form-label text-light">Serial Number:</label>
                         <input type="text" name="serialNumber" class="form-control" id="serialNumber" value="{{$device->serialNumber}}">
                     </div>

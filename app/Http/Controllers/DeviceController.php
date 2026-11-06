@@ -61,7 +61,6 @@ class DeviceController extends Controller
 {
     if($device->user_id == Auth::user()->id){
         $device->name = $request->name;
-        $device->category = $request->category;
         $device->serialNumber = $request->serialNumber;
         if($request->hasFile('image')){
             $device->image = $request->file('image')->store('images','public');
@@ -74,7 +73,7 @@ class DeviceController extends Controller
                 $device->genres()->attach($genre->id);
             }
         }
-        
+
         return redirect()->route('home')->with('success', 'Modifica avvenuta con successo');
         } else {
         return redirect()->route('home')->with('error', 'Errore di visualizzazione della pagina');
